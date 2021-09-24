@@ -14,13 +14,30 @@ import { createStore } from "vuex";
 
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
+    state: { expertMode: false },
+    mutations: {
+      SET_EXPERT_MODE(state, expertMode) {
+        state.expertMode = expertMode;
+      },
+    },
+    actions: {
+      updateExpertMode({ commit }, expertMode) {
+        commit("SET_EXPERT_MODE", expertMode);
+      },
+    },
+    getters: {
+      expertMode: (state) => {
+        return state.expertMode;
+      },
+    },
+
     modules: {
       absolute: {
         namespaced: true,
         state: {
           flour: 1000,
-          water: 750,
-          salt: 18,
+          water: 700,
+          salt: 30,
           yeast: 1,
           sourdough: 30.0,
         },
@@ -103,10 +120,10 @@ export default store(function (/* { ssrContext } */) {
       percentage: {
         namespaced: true,
         state: {
-          water: 75,
-          salt: 1.8,
+          water: 70,
+          salt: 3,
           yeast: 0.1,
-          sourdough: 3
+          sourdough: 3,
         },
 
         mutations: {
@@ -142,7 +159,7 @@ export default store(function (/* { ssrContext } */) {
             commit("SET_SALT", values.salt);
             commit("SET_YEAST", values.yeast);
             commit("SET_SOURDOUGH", values.sourdough);
-          }
+          },
         },
 
         getters: {

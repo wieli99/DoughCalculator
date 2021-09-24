@@ -16,15 +16,15 @@ export default {
   setup() {
     const store = useStore();
 
-    let recipes = ["Sourdough-Yeast Bread", "Sourdough Bread", "Yeast Bread"];
-    let selectedRecipe = ref("Sourdough-Yeast Bread");
+    let recipes = ["Sourdough-Yeast", "Sourdough", "Yeast"];
+    let selectedRecipe = ref("Sourdough-Yeast");
 
     watch(selectedRecipe, () => {
       switch (selectedRecipe.value) {
-        case "Sourdough-Yeast Bread":
+        case "Sourdough-Yeast":
           store.dispatch("percentage/updateAll", {
-            water: 75,
-            salt: 1.8,
+            water: 70,
+            salt: 3,
             yeast: 0.1,
             sourdough: 3,
           });
@@ -34,10 +34,10 @@ export default {
           );
           break;
 
-        case "Sourdough Bread":
+        case "Sourdough":
           store.dispatch("percentage/updateAll", {
-            water: 75,
-            salt: 1.8,
+            water: 72,
+            salt: 3,
             yeast: 0,
             sourdough: 4,
           });
@@ -47,10 +47,10 @@ export default {
           );
           break;
 
-        case "Yeast Bread":
+        case "Yeast":
           store.dispatch("percentage/updateAll", {
-            water: 75,
-            salt: 1.8,
+            water: 70,
+            salt: 3,
             yeast: 1,
             sourdough: 0,
           });

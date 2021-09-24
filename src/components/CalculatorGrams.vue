@@ -1,5 +1,18 @@
 <template>
   <q-input
+    v-if="!expertMode"
+    readonly
+    label-slot
+    suffix="g"
+    v-model.number="flourComputed"
+    min="0"
+    type="number"
+    filled
+    class="q-mb-sm"
+    ><template v-slot:label>Flour</template>
+  </q-input>
+
+  <q-input
     readonly
     label-slot
     suffix="ml"
@@ -53,7 +66,7 @@
 </template>
 
 <script>
-import { ref, watch, watchEffect, computed } from "vue";
+import { ref, watch, computed } from "vue";
 import { useStore } from "vuex";
 
 export default {
@@ -66,17 +79,17 @@ export default {
     let salt = computed(() => store.getters["absolute/salt"]);
     let yeast = computed(() => store.getters["absolute/yeast"]);
     let sourdough = computed(() => store.getters["absolute/sourdough"]);
+    let flourComputed = computed(() => store.getters["absolute/flour"]);
 
-    watch(flour, () => {
-      store.dispatch("absolute/updateValues", flour.value);
-    });
+    let expertMode = computed(() => store.getters.expertMode);
 
     return {
-      flour,
       water,
       salt,
       yeast,
       sourdough,
+      expertMode,
+      flourComputed
     };
   },
 };
