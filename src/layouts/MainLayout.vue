@@ -2,13 +2,14 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar class="text-black">
-        <q-toolbar-title class="text-center">
+        <q-toolbar-title>
           Dough Calculator
         </q-toolbar-title>
         <q-toggle
           v-model="expertMode"
           label="Expert Mode"
           color="accent"
+          dark="false"
           size="lg"
           class="flex-center"
         />
