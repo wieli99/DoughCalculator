@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex column flex-center">
     <CalculatorPortionSizes v-if="!expertMode"></CalculatorPortionSizes>
-    <q-card class="main-card" bordered>
+    <q-card class="main-card q-mb-lg" bordered>
       <q-card-section>
         <CalculatorRecipes class="q-mb-sm"></CalculatorRecipes>
 
